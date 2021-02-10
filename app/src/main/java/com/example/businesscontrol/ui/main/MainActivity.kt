@@ -1,19 +1,21 @@
 package com.example.businesscontrol.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.businesscontrol.R
 import com.example.businesscontrol.models.LocalData
 import com.example.businesscontrol.ui.main.adapter.AdapterMain
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity() : AppCompatActivity() {
 
     private lateinit var adapterMain: AdapterMain
     private lateinit var viewModel: MainViewModel
+    var db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

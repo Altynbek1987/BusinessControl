@@ -1,0 +1,30 @@
+[
+  {
+  "kind": "Category",
+  "company": "Geek tech",
+
+    "items":[
+      {
+        "kind": "engine",
+        "id": 1,
+        "img": "res/drawable/engine.jpg/jpg",
+        "snippet": {
+          "oil": "Oil",
+          "filter": "Filter",
+          "starter": "Starter"
+        }
+      },
+      {
+        "kind": "chassis",
+        "id": 2,
+        "img": "res/drawable/hodovoj.jpg/jpg",
+        "snippet": {
+          "silent_block": "SilentBlock",
+          "stabilizer_sleeves": "StabilizerSleeves",
+          "spring": "Spring"
+        }
+      }
+    ]
+
+}
+]
