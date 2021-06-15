@@ -1,7 +1,6 @@
 package com.example.businesscontrol.ui.main.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.businesscontrol.R
-import com.example.businesscontrol.models.LocalData
+import com.example.businesscontrol.models.Category
+import com.example.businesscontrol.ui.main.MainActivity
 
-class AdapterMain() :RecyclerView.Adapter<AdapterMain.MainHolder>(){
-    var listService : MutableList<Int> = mutableListOf()
-    var listName: MutableList<String> = mutableListOf()
-    lateinit var localData: LocalData
 
+class AdapterMain(var onItemClickListener: MainActivity) :RecyclerView.Adapter<AdapterMain.MainHolder>(){
+    var listService : MutableList<Category> = mutableListOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -29,15 +27,13 @@ class AdapterMain() :RecyclerView.Adapter<AdapterMain.MainHolder>(){
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         holder.onBind(listService[position])
-        //holder.onName(listName[position])
     }
-    fun addImage(item: MutableList<Int>){
+
+    fun addImage(item: MutableList<Category>){
         listService.addAll(item)
         notifyDataSetChanged()
     }
-//    fun addString(item: MutableList<String>){
-//        listName.addAll(item).toString()
-//    }
+
 
     inner class MainHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -46,13 +42,12 @@ class AdapterMain() :RecyclerView.Adapter<AdapterMain.MainHolder>(){
 
 
         @SuppressLint("SetTextI18n")
-        fun onBind(int: Int) {
-            imageMainHolder.setImageResource(int)
-            tvNameService.text
+        fun onBind(category: Category) {
+            imageMainHolder.setImageResource(category.imageId!!)
+            tvNameService.text = category.name
+            itemView.setOnClickListener { onItemClickListener.itemClick(category.id) }
         }
-        fun onName(s:String){
-            //tvNameService.text[0].toString()
-        }
+
     }
 }
 
